@@ -1,0 +1,15 @@
+@import "../../GLOBAL_VARIABLES.scss";
+
+.sort {
+    padding: 10px 15px;
+    border: 1px solid black;
+    margin-right: 10px;
+
+    input {
+        visibility: hidden;
+    }
+}
+
+.sortActive {
+    background: $activeColor;
+}

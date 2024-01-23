@@ -1,0 +1,56 @@
+@import "./GLOBAL_VARIABLES.scss";
+
+html {
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+}
+
+body {
+    font-size: 1rem;
+    background: $backgroundColor;
+}
+
+button {
+    background: inherit;
+    border: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+label {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#root {
+    padding: 15px 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    #root {
+        max-width: 970px;
+    }
+}
+
+@media (max-width: 992px) {
+    #root {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 767px) {
+    #root {
+        max-width: none;
+    }
+}
