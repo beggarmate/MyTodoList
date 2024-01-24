@@ -1,6 +1,7 @@
 @import "../../GLOBAL_VARIABLES.scss";
 
 .modal {
+    z-index: 50;
     width: 100vw;
     height: 100vh;
     left: 0;

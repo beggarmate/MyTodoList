@@ -35,6 +35,7 @@ const AddTodo = ({ todos, setTodos, setOpenModal }) => {
         ]);
 
         setNewTodo(emptyNewTodo);
+        closeAddTodoModal();
     };
 
     const modal =

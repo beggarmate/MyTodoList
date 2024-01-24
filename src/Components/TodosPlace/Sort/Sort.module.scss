@@ -1,11 +1,16 @@
 @import "../../../GLOBAL_VARIABLES.scss";
 
-.sortBtn {
+.sortRadioInp {
+    user-select: none;
     padding: 10px 15px;
-    border: 1px solid black;
+    border: 2px solid black;
 
     input {
         visibility: hidden;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 5px black;
     }
 }
 

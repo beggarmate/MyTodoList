@@ -20,7 +20,7 @@ function App() {
     const [filter, setFilter] = useState({
         searchQuery: "",
         searchProperties: { title: true, body: true, date: true },
-        sort: "title",
+        sort: "date",
         sortIncreaseOrder: false,
     });
 

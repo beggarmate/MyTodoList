@@ -1,6 +1,7 @@
 @import "../../../GLOBAL_VARIABLES.scss";
 
 .todo {
+    word-break: break-all;
     box-shadow: 2px 2px 5px black;
     padding: 10px 10px;
     display: flex;
@@ -13,11 +14,9 @@
     gap: 25px;
     transition: 125ms linear;
     &:hover {
-        transform: scale(110%);
-        transition: 125ms linear;
-        box-shadow: 2px 2px 5px black;
+        box-shadow: 0px 0px 5px black;
+        z-index: 1;
     }
-
     mark {
         background: rgb(251, 153, 153);
     }
@@ -66,6 +65,7 @@
     border-top: white 2px solid;
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
 
     button {
         border-radius: 10px;

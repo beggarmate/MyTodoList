@@ -18,8 +18,8 @@ const Sort = ({ filter, setFilter }) => {
 
     const getClassName = (sort) => {
         return filter.sort === sort
-            ? `${classes.sortBtn} ${classes.sortActive}`
-            : classes.sortBtn;
+            ? `${classes.sortRadioInp} ${classes.sortActive}`
+            : classes.sortRadioInp;
     };
 
     const whichArrow = (sortTitle) => {

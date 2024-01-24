@@ -1,0 +1,33 @@
+@import "../../GLOBAL_VARIABLES.scss";
+
+.toolTipWrapper {
+    position: relative;
+}
+
+.toolTipText {
+    word-break: normal;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 10px 15px;
+    user-select: none;
+    z-index: 2;
+    @media (max-width: 992px) {
+        display: none;
+    }
+}
+
+.top {
+    bottom: calc(100% + 5px);
+}
+.right {
+    left: calc(100% + 5px);
+}
+
+.left {
+    right: calc(100% + 5px);
+}
+.bottom {
+    top: calc(100% + 5px);
+}

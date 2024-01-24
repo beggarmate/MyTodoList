@@ -9,6 +9,7 @@ import ModalWindow from "../../ModalWindow/ModalWindow";
 import TodoPage from "./TodoCard/TodoCard";
 import getLocaleDate from "./../../../utils/getLocaleDate";
 import { motion } from "framer-motion";
+import ToolTip from "../../ToolTip/ToolTip";
 
 const Todo = ({
     todo,
@@ -19,6 +20,7 @@ const Todo = ({
     toggleTodoStatusClickHandler,
 }) => {
     const [showTodoCard, setShowTodoCard] = useState(false);
+    const [showRemoveWarning, setShowRemoveWarning] = useState(false);
 
     function openTodoCard() {
         setOpenModal(true);
@@ -28,6 +30,16 @@ const Todo = ({
     function closeTodoCard() {
         setOpenModal(false);
         setShowTodoCard(false);
+    }
+
+    function openRemoveTodoModal() {
+        setOpenModal(true);
+        setShowRemoveWarning(true);
+    }
+
+    function closeRemoveTodoModal() {
+        setOpenModal(false);
+        setShowRemoveWarning(false);
     }
 
     const titleClickHandler = () => openTodoCard(todo);
@@ -61,11 +73,28 @@ const Todo = ({
             document.body
         );
 
+    const removeModal =
+        showRemoveWarning &&
+        createPortal(
+            <ModalWindow closeModal={closeRemoveTodoModal}>
+                <h2>Вы уверены, что хотите удалить задачу?</h2>
+                <button
+                    onClick={() => {
+                        removeTodo(todo.id);
+                        closeRemoveTodoModal();
+                    }}>
+                    Да
+                </button>
+            </ModalWindow>,
+            document.body
+        );
+
     return (
         <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: -100 }}
             transition={{ duration: 0.4 }}
+            whileHover={{ scale: 1.1 }}
             className={classes.todo + " " + classes[todo.status]}>
             <p
                 className={classes.title}
@@ -75,48 +104,60 @@ const Todo = ({
             <p className={classes.body}>{body}</p>
             <p className={classes.date}>{date}</p>
             <div className={classes.btns}>
-                {openEditWindow ? (
+                <ToolTip text={"Редактировать"}>
+                    {openEditWindow ? (
+                        <button
+                            className={classes.editBtn}
+                            onClick={() => openEditWindow(todo.id)}>
+                            <img
+                                src={editIcon}
+                                alt="edit icon"
+                            />
+                        </button>
+                    ) : null}
+                </ToolTip>
+                <ToolTip
+                    text={
+                        todo.status === "active"
+                            ? "Задача выполнена"
+                            : "Вернуть в активные"
+                    }>
                     <button
-                        className={classes.editBtn}
-                        onClick={() => openEditWindow(todo.id)}>
+                        className={
+                            todo.status === "active"
+                                ? classes.activeBtn
+                                : classes.completedBtn
+                        }
+                        onClick={() => {
+                            toggleTodoStatusClickHandler(todo.id);
+                        }}>
                         <img
-                            src={editIcon}
-                            alt="edit icon"
+                            src={
+                                todo.status === "active"
+                                    ? completeIcon
+                                    : backActiveIcon
+                            }
+                            alt={
+                                todo.status === "active"
+                                    ? "active icon"
+                                    : "complete icon"
+                            }
                         />
                     </button>
-                ) : null}
-                <button
-                    className={
-                        todo.status === "active"
-                            ? classes.activeBtn
-                            : classes.completedBtn
-                    }
-                    onClick={() => {
-                        toggleTodoStatusClickHandler(todo.id);
-                    }}>
-                    <img
-                        src={
-                            todo.status === "active"
-                                ? completeIcon
-                                : backActiveIcon
-                        }
-                        alt={
-                            todo.status === "active"
-                                ? "active icon"
-                                : "complete icon"
-                        }
-                    />
-                </button>
-                <button
-                    className={classes.removeBtn}
-                    onClick={() => removeTodo(todo.id)}>
-                    <img
-                        src={deleteIcon}
-                        alt="delete icon"
-                    />
-                </button>
+                </ToolTip>
+                <ToolTip text={"Удалить задачу"}>
+                    <button
+                        className={classes.removeBtn}
+                        onClick={openRemoveTodoModal}>
+                        <img
+                            src={deleteIcon}
+                            alt="delete icon"
+                        />
+                    </button>
+                </ToolTip>
             </div>
             {todoCard}
+            {removeModal}
         </motion.div>
     );
 };

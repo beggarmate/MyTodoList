@@ -8,6 +8,7 @@ import Sort from "./Sort/Sort";
 import Todo from "./Todo/Todo";
 import AddTodo from "./AddTodo/AddTodo";
 import Filter from "./Filter/Filter";
+import { AnimatePresence } from "framer-motion";
 
 const TodosPlace = ({ todos, setTodos, filter, setFilter, setOpenModal }) => {
     const [todosStatus, setTodosStatus] = useState("active");
@@ -119,11 +120,13 @@ const TodosPlace = ({ todos, setTodos, filter, setFilter, setOpenModal }) => {
                 />
             </div>
             <div className={classes.todosPlaceContent}>
-                {todosStatus === "all" && allTodos[0]
-                    ? allTodos
-                    : statusTodos[0]
-                    ? statusTodos
-                    : emptyTodosContent}
+                <AnimatePresence>
+                    {todosStatus === "all" && allTodos[0]
+                        ? allTodos
+                        : statusTodos[0]
+                        ? statusTodos
+                        : emptyTodosContent}
+                </AnimatePresence>
             </div>
             {modal}
         </div>
