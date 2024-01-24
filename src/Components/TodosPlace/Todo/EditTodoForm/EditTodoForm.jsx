@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./EditTodoForm.module.scss";
 
 const EditTodoForm = ({
     todo,
@@ -21,7 +22,9 @@ const EditTodoForm = ({
     const newBodyChangeHandler = (e) => setNewBody(e.target.value);
 
     return (
-        <form onSubmit={submitHandler}>
+        <form
+            className={classes.editTodoForm}
+            onSubmit={submitHandler}>
             <label>
                 <h3>Название</h3>
                 <input

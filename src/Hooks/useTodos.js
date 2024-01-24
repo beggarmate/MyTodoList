@@ -4,7 +4,9 @@ import hasSubstr from "../utils/hasSubstr";
 export default function useTodos(todos, filter) {
     const getSortedTodos = useCallback(() => {
         return [...todos].sort((a, b) =>
-            a[filter.sort].localeCompare(b[filter.sort])
+            filter.sortIncreaseOrder
+                ? a[filter.sort].localeCompare(b[filter.sort])
+                : b[filter.sort].localeCompare(a[filter.sort])
         );
     }, [todos, filter]);
 

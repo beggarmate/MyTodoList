@@ -1,9 +1,8 @@
-@import "../../GLOBAL_VARIABLES.scss";
+@import "../../../GLOBAL_VARIABLES.scss";
 
-.sort {
+.sortBtn {
     padding: 10px 15px;
     border: 1px solid black;
-    margin-right: 10px;
 
     input {
         visibility: hidden;
@@ -11,5 +10,5 @@
 }
 
 .sortActive {
-    background: $activeColor;
+    background: $otherColor;
 }

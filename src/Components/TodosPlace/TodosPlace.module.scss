@@ -5,7 +5,6 @@
     display: flex;
     gap: 5px;
     box-shadow: 0px 0px 5px black;
-    border-radius: 15px;
 
     @media (max-width: 992px) {
         flex-direction: column;
@@ -21,33 +20,20 @@
 .todosPlaceButtons {
     padding: 10px 15px;
     display: flex;
-    flex-grow: 1;
-    max-width: 200px;
+    flex: 0 0 200px;
     flex-direction: column;
     gap: 15px;
     border-right: 1px solid rgb(0, 0, 0);
 
     @media (max-width: 992px) {
-        max-width: none;
         border-right: none;
         border-bottom: 1px solid rgb(0, 0, 0);
     }
 
     button {
+        border: 1px solid black;
         padding: 5px 10px;
         background: white;
-    }
-
-    button.all {
-        background: $otherColor;
-    }
-
-    button.active {
-        background: $activeColor;
-    }
-
-    button.completed {
-        background: $completedColor;
     }
 }
 

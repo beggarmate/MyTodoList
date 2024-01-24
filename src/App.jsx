@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Search from "./Components/Search/Search";
-import Sort from "./Components/Sort/Sort";
 import TodosPlace from "./Components/TodosPlace/TodosPlace";
-import AddTodo from "./Components/AddTodo/AddTodo";
+import AddTodo from "./Components/TodosPlace/AddTodo/AddTodo";
 import useTodos from "./Hooks/useTodos";
 import "./App.scss";
 
@@ -20,8 +19,9 @@ function App() {
 
     const [filter, setFilter] = useState({
         searchQuery: "",
-        searchProperties: { title: true, body: false, date: false },
+        searchProperties: { title: true, body: true, date: true },
         sort: "title",
+        sortIncreaseOrder: false,
     });
 
     const searchAndSortedTodos = useTodos(todos, filter);
@@ -30,21 +30,14 @@ function App() {
         <div
             inert={openModal ? "true" : null}
             className="App">
-            <AddTodo
-                todos={todos}
-                setTodos={setTodos}
-            />
             <Search
-                filter={filter}
-                setFilter={setFilter}
-            />
-            <Sort
                 filter={filter}
                 setFilter={setFilter}
             />
             <TodosPlace
                 todos={searchAndSortedTodos}
                 filter={filter}
+                setFilter={setFilter}
                 setTodos={setTodos}
                 setOpenModal={setOpenModal}
             />

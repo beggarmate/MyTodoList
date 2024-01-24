@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import Todo from "../Todo/Todo";
-import EditTodoForm from "../EditTodoForm/EditTodoForm";
+
+import EditTodoForm from "./Todo/EditTodoForm/EditTodoForm";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { createPortal } from "react-dom";
 import classes from "./TodosPlace.module.scss";
+import Sort from "./Sort/Sort";
+import Todo from "./Todo/Todo";
+import AddTodo from "./AddTodo/AddTodo";
+import Filter from "./Filter/Filter";
 
-const TodosPlace = ({ todos, setTodos, filter, setOpenModal }) => {
-    const [todosStatus, setTodosStatus] = useState("all");
+const TodosPlace = ({ todos, setTodos, filter, setFilter, setOpenModal }) => {
+    const [todosStatus, setTodosStatus] = useState("active");
     const [hasEditModal, setHasEditModal] = useState(false);
     const [editTodoId, setEditTodoId] = useState();
 
     const modal =
         hasEditModal &&
         createPortal(
-            <ModalWindow closeEditWindow={closeEditWindow}>
+            <ModalWindow closeModal={closeModal}>
                 <EditTodoForm
                     todo={todos.find((todo) => todo.id === editTodoId)}
                     editTodo={editTodo}
@@ -31,7 +35,7 @@ const TodosPlace = ({ todos, setTodos, filter, setOpenModal }) => {
         setOpenModal(true);
     }
 
-    function closeEditWindow() {
+    function closeModal() {
         setHasEditModal(false);
         setOpenModal(false);
     }
@@ -69,6 +73,7 @@ const TodosPlace = ({ todos, setTodos, filter, setOpenModal }) => {
             <Todo
                 todosStatus={todosStatus}
                 toggleTodoStatusClickHandler={toggleTodoStatusClickHandler}
+                setOpenModal={setOpenModal}
                 filter={filter}
                 openEditWindow={openEditWindow}
                 removeTodo={removeTodo}
@@ -99,24 +104,19 @@ const TodosPlace = ({ todos, setTodos, filter, setOpenModal }) => {
     return (
         <div className={classes.todosPlace}>
             <div className={classes.todosPlaceButtons}>
-                <button
-                    className={todosStatus === "active" ? classes.active : null}
-                    onClick={() => setTodosStatus("active")}>
-                    Активные
-                </button>
-
-                <button
-                    className={
-                        todosStatus === "completed" ? classes.completed : null
-                    }
-                    onClick={() => setTodosStatus("completed")}>
-                    Выполненные
-                </button>
-                <button
-                    className={todosStatus === "all" ? classes.all : null}
-                    onClick={() => setTodosStatus("all")}>
-                    Все
-                </button>
+                <AddTodo
+                    todos={todos}
+                    setTodos={setTodos}
+                    setOpenModal={setOpenModal}
+                />
+                <Filter
+                    todosStatus={todosStatus}
+                    setTodosStatus={setTodosStatus}
+                />
+                <Sort
+                    filter={filter}
+                    setFilter={setFilter}
+                />
             </div>
             <div className={classes.todosPlaceContent}>
                 {todosStatus === "all" && allTodos[0]
@@ -124,8 +124,8 @@ const TodosPlace = ({ todos, setTodos, filter, setOpenModal }) => {
                     : statusTodos[0]
                     ? statusTodos
                     : emptyTodosContent}
-                {modal}
             </div>
+            {modal}
         </div>
     );
 };

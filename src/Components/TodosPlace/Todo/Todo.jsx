@@ -1,23 +1,33 @@
 import React, { useState } from "react";
-import getLocaleDate from "../../utils/getLocaleDate";
 import classes from "./Todo.module.scss";
-import editIcon from "../../icons/editIcon.png";
-import deleteIcon from "../../icons/deleteIcon.png";
-import completeIcon from "../../icons/completeIcon.png";
-import backActiveIcon from "../../icons/backActiveIcon.png";
+import editIcon from "../../../icons/editIcon.svg";
+import deleteIcon from "../../../icons/deleteIcon.svg";
+import completeIcon from "../../../icons/completeIcon.svg";
+import backActiveIcon from "../../../icons/backActiveIcon.png";
+import { createPortal } from "react-dom";
+import ModalWindow from "../../ModalWindow/ModalWindow";
+import TodoPage from "./TodoCard/TodoCard";
+import getLocaleDate from "./../../../utils/getLocaleDate";
+import { motion } from "framer-motion";
 
 const Todo = ({
     todo,
     removeTodo,
     openEditWindow,
+    setOpenModal,
     filter,
-    index,
     toggleTodoStatusClickHandler,
 }) => {
     const [showTodoCard, setShowTodoCard] = useState(false);
 
-    function openTodoCard(todo) {
-        showTodoCard(true);
+    function openTodoCard() {
+        setOpenModal(true);
+        setShowTodoCard(true);
+    }
+
+    function closeTodoCard() {
+        setOpenModal(false);
+        setShowTodoCard(false);
     }
 
     const titleClickHandler = () => openTodoCard(todo);
@@ -42,8 +52,21 @@ const Todo = ({
         "date"
     );
 
+    const todoCard =
+        showTodoCard &&
+        createPortal(
+            <ModalWindow closeModal={closeTodoCard}>
+                <TodoPage todo={todo} />
+            </ModalWindow>,
+            document.body
+        );
+
     return (
-        <div className={classes.todo + " " + classes[todo.status]}>
+        <motion.div
+            animate={{ scale: 1 }}
+            initial={{ scale: 0.8 }}
+            transition={{ duration: 0.4 }}
+            className={classes.todo + " " + classes[todo.status]}>
             <p
                 className={classes.title}
                 onClick={titleClickHandler}>
@@ -66,7 +89,7 @@ const Todo = ({
                     className={
                         todo.status === "active"
                             ? classes.activeBtn
-                            : classes.completeBtn
+                            : classes.completedBtn
                     }
                     onClick={() => {
                         toggleTodoStatusClickHandler(todo.id);
@@ -93,7 +116,8 @@ const Todo = ({
                     />
                 </button>
             </div>
-        </div>
+            {todoCard}
+        </motion.div>
     );
 };
 
