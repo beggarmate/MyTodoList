@@ -22,6 +22,8 @@ function App() {
         searchProperties: { title: true, body: true, date: true },
         sort: "date",
         sortIncreaseOrder: false,
+        date: "",
+        completeDate: "",
     });
 
     const searchAndSortedTodos = useTodos(todos, filter);

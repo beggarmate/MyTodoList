@@ -25,23 +25,20 @@ const EditTodoForm = ({
         <form
             className={classes.editTodoForm}
             onSubmit={submitHandler}>
-            <label>
-                <h3>Название</h3>
-                <input
-                    type="text"
-                    value={newTitle}
-                    onChange={newTitleChangeHandler}
-                />
-            </label>
-
-            <label>
-                <h3>Содержание</h3>
-                <input
-                    type="text"
-                    value={newBody}
-                    onChange={newBodyChangeHandler}
-                />
-            </label>
+            <h3>Название</h3>
+            <input
+                type="text"
+                placeholder="Введите новое название..."
+                value={newTitle}
+                onChange={newTitleChangeHandler}
+            />
+            <h3>Содержание</h3>
+            <input
+                type="text"
+                placeholder="Введите текст..."
+                value={newBody}
+                onChange={newBodyChangeHandler}
+            />
             <button>Сохранить</button>
         </form>
     );

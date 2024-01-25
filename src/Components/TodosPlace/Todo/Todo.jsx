@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import classes from "./Todo.module.scss";
-import editIcon from "../../../icons/editIcon.svg";
-import deleteIcon from "../../../icons/deleteIcon.svg";
-import completeIcon from "../../../icons/completeIcon.svg";
-import backActiveIcon from "../../../icons/backActiveIcon.png";
+import editIcon from "../../../image/icons/editIcon.svg";
+import deleteIcon from "../../../image/icons/deleteIcon.svg";
+import completeIcon from "../../../image/icons/completeIcon.svg";
+import backActiveIcon from "../../../image/icons/backActiveIcon.png";
 import { createPortal } from "react-dom";
 import ModalWindow from "../../ModalWindow/ModalWindow";
 import TodoPage from "./TodoCard/TodoCard";
@@ -64,6 +64,14 @@ const Todo = ({
         "date"
     );
 
+    const completeDate = todo.completeDate
+        ? highlightText(
+              getLocaleDate(new Date(...todo.completeDate.split(" "))),
+              filter.searchQuery,
+              "date"
+          )
+        : null;
+
     const todoCard =
         showTodoCard &&
         createPortal(
@@ -92,9 +100,8 @@ const Todo = ({
     return (
         <motion.div
             animate={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: -100 }}
+            initial={{ opacity: 0, y: 500 }}
             transition={{ duration: 0.4 }}
-            whileHover={{ scale: 1.1 }}
             className={classes.todo + " " + classes[todo.status]}>
             <p
                 className={classes.title}
@@ -102,7 +109,16 @@ const Todo = ({
                 {title}
             </p>
             <p className={classes.body}>{body}</p>
-            <p className={classes.date}>{date}</p>
+            <div className={classes.date}>
+                <ToolTip text={"Дата создания задачи"}>
+                    <p className={classes.dateStart}>{date}</p>
+                </ToolTip>
+                {todo.completeDate ? (
+                    <ToolTip text={"Дата выполнения задачи"}>
+                        <p className={classes.completeDate}>{completeDate}</p>
+                    </ToolTip>
+                ) : null}
+            </div>
             <div className={classes.btns}>
                 <ToolTip text={"Редактировать"}>
                     {openEditWindow ? (

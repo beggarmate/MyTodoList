@@ -1,9 +1,15 @@
 @import "../../../GLOBAL_VARIABLES.scss";
 
 .addTodoForm {
+    text-align: center;
+    width: 80vw;
+    cursor: auto;
+    padding: 25px 35px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    background: $backgroundColor;
+    border: 2px solid $borderColor;
 
     input {
         padding: 0px 15px;
@@ -11,15 +17,27 @@
     }
 
     button {
+        border: 2px solid $borderColor;
+        font-size: 1.5rem;
+        font-family: inherit;
         padding: 5px 10px;
         align-self: center;
         width: 200px;
+        &:hover {
+            color: white;
+            background: $activeColor;
+        }
     }
 }
 .addBtn {
     &:hover {
         background: $otherColor;
     }
+}
+
+.addTodoFormHeader {
+    padding: 10px 0;
+    background: $activeColor;
 }
 
 .addBtnPlus {

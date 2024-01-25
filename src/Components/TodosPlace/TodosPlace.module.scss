@@ -4,7 +4,7 @@
     padding: 25px 10px;
     display: flex;
     gap: 5px;
-    box-shadow: 0px 0px 5px black;
+    box-shadow: 0px 0px 8px $borderColor;
     @media (max-width: 992px) {
         flex-direction: column;
     }
@@ -13,6 +13,7 @@
 .emptyTodosContent {
     padding: 10px 15px;
     text-align: center;
+    font-weight: 700;
     font-size: 1.4rem;
 }
 
@@ -22,7 +23,7 @@
     flex: 0 0 200px;
     flex-direction: column;
     gap: 15px;
-    border-right: 1px solid rgb(0, 0, 0);
+    border-right: 2px solid $activeColor;
 
     @media (max-width: 992px) {
         border-right: none;
@@ -30,9 +31,12 @@
     }
 
     button {
-        border: 2px solid black;
+        font-family: inherit;
+        font-size: 1.4rem;
+        color: inherit;
+        border: 2px solid $borderColor;
         padding: 5px 10px;
-        background: white;
+        background: $backgroundColor;
         &:hover {
             box-shadow: 0px 0px 5px black;
         }
@@ -40,9 +44,9 @@
 }
 
 .todosPlaceContent {
-    padding: 10px 15px;
+    padding: 0 15px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 25px;

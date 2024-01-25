@@ -39,7 +39,8 @@ const Sort = ({ filter, setFilter }) => {
                 className={getClassName("title")}
                 tabIndex="0">
                 <span>
-                    По названию <br></br>
+                    По названию
+                    <br />
                     {whichArrow("title") === "upArrow" ? (
                         <span>&#129045;</span>
                     ) : whichArrow("title") === "downArrow" ? (
@@ -61,7 +62,7 @@ const Sort = ({ filter, setFilter }) => {
                 tabIndex="0">
                 <span>
                     По содержанию
-                    <br></br>
+                    <br />
                     {whichArrow("body") === "upArrow" ? (
                         <span>&#129045;</span>
                     ) : whichArrow("body") === "downArrow" ? (
@@ -82,7 +83,7 @@ const Sort = ({ filter, setFilter }) => {
                 className={getClassName("date")}
                 tabIndex="0">
                 <span>
-                    По дате <br></br>
+                    По дате <br />
                     {whichArrow("date") === "upArrow" ? (
                         <span>&#129045;</span>
                     ) : whichArrow("date") === "downArrow" ? (

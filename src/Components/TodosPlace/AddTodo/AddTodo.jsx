@@ -30,6 +30,7 @@ const AddTodo = ({ todos, setTodos, setOpenModal }) => {
                 ...newTodo,
                 id: getId(),
                 date,
+                completeDate: "",
                 status: "active",
             },
         ]);
@@ -45,14 +46,19 @@ const AddTodo = ({ todos, setTodos, setOpenModal }) => {
                 <form
                     onSubmit={addTodoFormSubmitHandler}
                     className={classes.addTodoForm}>
+                    <h3 className={classes.addTodoFormHeader}>
+                        Создать новую задачу
+                    </h3>
+                    <h3>Название</h3>
                     <input
-                        placeholder="Название задачи..."
+                        placeholder="Введите название новой задачи..."
                         type="text"
                         value={newTodo.title}
                         onChange={titleChangeHandler}
                     />
+                    <h3>Содержимое</h3>
                     <input
-                        placeholder="Содержимое..."
+                        placeholder="Введите текст..."
                         type="text"
                         value={newTodo.body}
                         onChange={bodyChangeHandler}

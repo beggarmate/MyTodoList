@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+
     @media (max-width: 992px) {
         flex-direction: column;
     }
@@ -28,6 +29,7 @@
 }
 
 .searchLabel {
-    border: 2px solid black;
+    font-size: 1.4rem;
+    border: 2px solid $borderColor;
     padding: 10px 15px;
 }

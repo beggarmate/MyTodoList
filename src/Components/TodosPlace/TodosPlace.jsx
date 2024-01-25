@@ -56,6 +56,9 @@ const TodosPlace = ({ todos, setTodos, filter, setFilter, setOpenModal }) => {
     }
 
     const toggleTodoStatusClickHandler = (id) => {
+        const currentDate = new Date();
+        const date = `${currentDate.getFullYear()} ${currentDate.getMonth()} ${currentDate.getDate()} ${currentDate.getHours()} ${currentDate.getMinutes()}`;
+
         setTodos(
             todos.map((todo) => {
                 return todo.id !== id
@@ -64,6 +67,7 @@ const TodosPlace = ({ todos, setTodos, filter, setFilter, setOpenModal }) => {
                           ...todo,
                           status:
                               todo.status === "active" ? "completed" : "active",
+                          completeDate: todo.status === "active" ? date : "",
                       };
             })
         );

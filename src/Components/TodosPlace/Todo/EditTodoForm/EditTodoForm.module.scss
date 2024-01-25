@@ -1,4 +1,34 @@
+@import "../../../../GLOBAL_VARIABLES.scss";
+
 .editTodoForm {
-    padding: 10px 15px;
-    background: white;
+    text-align: center;
+    cursor: auto;
+    width: 80vw;
+    padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+    background: $backgroundColor;
+    border: 2px solid $borderColor;
+
+    input {
+        flex-grow: 1;
+        width: 100%;
+        padding: 0px 15px;
+        height: 60px;
+    }
+
+    button {
+        border: 2px solid $borderColor;
+        font-size: 1.5rem;
+        font-family: inherit;
+        padding: 5px 10px;
+        align-self: center;
+        width: 200px;
+        &:hover {
+            color: white;
+            background: $activeColor;
+        }
+    }
 }

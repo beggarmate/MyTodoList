@@ -37,7 +37,8 @@ const ToolTip = ({ children, text }) => {
             onMouseEnter={enterTargetHandler}
             onMouseLeave={leaveTargetHandler}
             onFocus={enterTargetHandler}
-            onBlur={leaveTargetHandler}>
+            onBlur={leaveTargetHandler}
+            onClick={leaveTargetHandler}>
             {children}
             <AnimatePresence>
                 {showToolTip && (
@@ -46,7 +47,7 @@ const ToolTip = ({ children, text }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0, transition: { delay: 0.2 } }}
-                        transition={{ delay: 1.5, duration: 0.8 }}
+                        transition={{ delay: 1.5, duration: 0.3 }}
                         className={`${classes.toolTipText} ${classes[freePositionY]} ${classes[freePositionX]}`}>
                         {text}
                     </motion.div>

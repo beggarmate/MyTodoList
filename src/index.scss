@@ -1,8 +1,12 @@
 @import "./GLOBAL_VARIABLES.scss";
 
 html {
+    color: $textColor;
     font-size: 20px;
     font-family: "Courier New", Courier, monospace;
+}
+h3 {
+    font-size: 2rem;
 }
 
 * {
