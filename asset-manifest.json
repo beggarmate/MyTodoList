@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/MyTodoList/static/css/main.7fab969c.css",
-    "main.js": "/MyTodoList/static/js/main.8affbfec.js",
+    "main.css": "/MyTodoList/static/css/main.90e7cde2.css",
+    "main.js": "/MyTodoList/static/js/main.1ef697f4.js",
     "static/media/completeIcon.svg": "/MyTodoList/static/media/completeIcon.c0754ca84931e3b39537510c8cc00349.svg",
     "static/media/editIcon.svg": "/MyTodoList/static/media/editIcon.0705fc2ba8f7c5f328c01e2d61470da0.svg",
     "static/media/deleteIcon.svg": "/MyTodoList/static/media/deleteIcon.49bf1aaa056707c625cde4d307dcfe5e.svg",
     "index.html": "/MyTodoList/index.html",
-    "main.7fab969c.css.map": "/MyTodoList/static/css/main.7fab969c.css.map",
-    "main.8affbfec.js.map": "/MyTodoList/static/js/main.8affbfec.js.map"
+    "main.90e7cde2.css.map": "/MyTodoList/static/css/main.90e7cde2.css.map",
+    "main.1ef697f4.js.map": "/MyTodoList/static/js/main.1ef697f4.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fab969c.css",
-    "static/js/main.8affbfec.js"
+    "static/css/main.90e7cde2.css",
+    "static/js/main.1ef697f4.js"
   ]
 }
