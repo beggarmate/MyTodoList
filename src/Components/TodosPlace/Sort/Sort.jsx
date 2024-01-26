@@ -22,15 +22,23 @@ const Sort = ({ filter, setFilter }) => {
             : classes.sortRadioInp;
     };
 
-    const whichArrow = (sortTitle) => {
+    const getSortOrder = (sortTitle) => {
         if (sortTitle === filter.sort && filter.sortIncreaseOrder) {
-            return "upArrow";
+            return "increase";
         }
 
         if (sortTitle === filter.sort && !filter.sortIncreaseOrder) {
-            return "downArrow";
+            return "decrease";
         }
     };
+
+    function getSortOrderText(property) {
+        if (getSortOrder(property) === "increase")
+            return <span>(по возрастанию)</span>;
+        if (getSortOrder(property) === "decrease")
+            return <span>(по убыванию)</span>;
+        return null;
+    }
 
     return (
         <>
@@ -41,11 +49,7 @@ const Sort = ({ filter, setFilter }) => {
                 <span>
                     По названию
                     <br />
-                    {whichArrow("title") === "upArrow" ? (
-                        <span>&#129045;</span>
-                    ) : whichArrow("title") === "downArrow" ? (
-                        <span>&#129047;</span>
-                    ) : null}
+                    {getSortOrderText("title")}
                 </span>
                 <input
                     hidden
@@ -63,11 +67,7 @@ const Sort = ({ filter, setFilter }) => {
                 <span>
                     По содержанию
                     <br />
-                    {whichArrow("body") === "upArrow" ? (
-                        <span>&#129045;</span>
-                    ) : whichArrow("body") === "downArrow" ? (
-                        <span>&#129047;</span>
-                    ) : null}
+                    {getSortOrderText("body")}
                 </span>
                 <input
                     hidden
@@ -84,11 +84,7 @@ const Sort = ({ filter, setFilter }) => {
                 tabIndex="0">
                 <span>
                     По дате <br />
-                    {whichArrow("date") === "upArrow" ? (
-                        <span>&#129045;</span>
-                    ) : whichArrow("date") === "downArrow" ? (
-                        <span>&#129047;</span>
-                    ) : null}
+                    {getSortOrderText("date")}
                 </span>
                 <input
                     hidden

@@ -85,14 +85,24 @@ const Todo = ({
         showRemoveWarning &&
         createPortal(
             <ModalWindow closeModal={closeRemoveTodoModal}>
-                <h2>Вы уверены, что хотите удалить задачу?</h2>
-                <button
-                    onClick={() => {
-                        removeTodo(todo.id);
-                        closeRemoveTodoModal();
-                    }}>
-                    Да
-                </button>
+                <div className={classes.deleteWarningMessage}>
+                    <h2>Вы уверены, что хотите удалить задачу?</h2>
+                    <div className={classes.deleteWarningBtns}>
+                        <button
+                            className={classes.acceptRemoveBtn}
+                            onClick={() => {
+                                removeTodo(todo.id);
+                                closeRemoveTodoModal();
+                            }}>
+                            Да
+                        </button>
+                        <button
+                            className={classes.cancelRemoveBtn}
+                            onClick={closeRemoveTodoModal}>
+                            Отмена
+                        </button>
+                    </div>
+                </div>
             </ModalWindow>,
             document.body
         );

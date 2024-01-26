@@ -24,12 +24,12 @@
     }
 }
 
-.activeSearchLabel {
-    background: $otherColor;
-}
-
 .searchLabel {
     font-size: 1.4rem;
-    border: 2px solid $borderColor;
+    outline: 2px solid $borderColor;
     padding: 10px 15px;
+}
+.activeSearchLabel {
+    outline: 2px solid $otherColor;
+    background: $otherColor;
 }

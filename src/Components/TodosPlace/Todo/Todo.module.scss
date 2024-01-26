@@ -6,11 +6,16 @@
     background: rgb(189, 189, 189);
     padding: 10px 10px;
     display: flex;
+    flex: 0 0 30%;
+    min-width: 225px;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 25px;
     &:hover {
         box-shadow: 0px 0px 9px black;
+    }
+    @media (max-width: 992px) {
+        min-width: none;
     }
     mark {
         background: rgb(251, 153, 153);
@@ -26,28 +31,46 @@
 }
 
 .title {
+    background: linear-gradient($textColor 70%, rgba(0, 0, 0, 0) 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     padding: 5px 10px;
     border-bottom: 2px solid $backgroundColor;
-    height: 150px;
+    height: 100px;
     overflow: hidden;
     cursor: pointer;
     font-size: 1.6rem;
     font-weight: 700;
+    @media (max-width: 992px) {
+        font-size: 1.2rem;
+    }
 }
 
 .body {
+    background: linear-gradient($textColor 70%, rgba(0, 0, 0, 0) 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     position: relative;
+    min-height: 150px;
     max-height: 250px;
     overflow: hidden;
     flex-grow: 1;
     font-size: 1.4rem;
+    @media (max-width: 992px) {
+        font-size: 1rem;
+    }
 }
 
 .date {
+    height: 80px;
     font-size: 1.1rem;
     display: flex;
-    justify-content: space-between;
-
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
     color: $dateTextColor;
 
     .dateStart,
@@ -60,7 +83,6 @@
         .dateStart {
             border-bottom: 2px solid $otherColor;
         }
-        flex-direction: column;
     }
 }
 
@@ -111,4 +133,46 @@
     @media (max-width: 992px) {
         justify-content: space-around;
     }
+}
+
+.deleteWarningMessage {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    h2 {
+        font-size: 2rem;
+    }
+    cursor: auto;
+    padding: 10px 15px;
+    background: $backgroundColor;
+    border: 2px solid $borderColor;
+
+    button {
+        padding: 10px 15px;
+    }
+
+    .acceptRemoveBtn {
+        outline: 2px solid $borderColor;
+        width: 100px;
+        &:hover {
+            color: white;
+            background: red;
+            box-shadow: 0 0 5px rgb(0, 0, 0);
+        }
+    }
+    .cancelRemoveBtn {
+        outline: 2px solid $borderColor;
+        color: $textColor;
+        width: 100px;
+        &:hover {
+            color: white;
+            background: $activeColor;
+            box-shadow: 0 0 5px rgb(0, 0, 0);
+        }
+    }
+}
+
+.deleteWarningBtns {
+    display: flex;
+    justify-content: space-around;
 }

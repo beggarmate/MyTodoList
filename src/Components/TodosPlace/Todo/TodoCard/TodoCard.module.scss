@@ -1,0 +1,17 @@
+@import "../../../../GLOBAL_VARIABLES.scss";
+
+.todoCard {
+    background: $backgroundColor;
+    padding: 10px 15px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    background: $activeColor;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+}
+
+.body {
+}

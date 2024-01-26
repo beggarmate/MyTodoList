@@ -15,5 +15,7 @@
 }
 
 .sortActive {
+    border: none;
+    color: $activeTextColor;
     background: $otherColor;
 }

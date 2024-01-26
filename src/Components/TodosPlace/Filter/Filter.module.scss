@@ -1,5 +1,7 @@
 @import "../../../GLOBAL_VARIABLES.scss";
 
 button.activeBtn {
+    border: none;
+    color: $activeTextColor;
     background: $otherColor;
 }
