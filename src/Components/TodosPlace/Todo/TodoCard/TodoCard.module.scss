@@ -8,20 +8,47 @@
     background: $backgroundColor;
     padding: 10px 15px;
     min-width: 300px;
-    max-width: 80vw;
+    width: 70vw;
+    max-height: 80vh;
     margin: 0 auto;
     word-wrap: break-word;
     text-align: center;
 }
 
 .title {
+    align-self: center;
+    width: 80%;
+    overflow: scroll;
+    min-height: 50px;
+    max-height: 10vh;
     background: $activeColor;
     font-size: 1.5rem;
     padding: 10px 15px;
+    span {
+        padding: 5px 10px;
+        display: block;
+        border-right: 2px solid $borderColor;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .body {
-    min-height: 100px;
+    align-self: center;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    span {
+        padding: 5px 10px;
+        display: block;
+        border-right: 2px solid $borderColor;
+    }
+    flex: 0 1 auto;
+    width: 90%;
+    min-height: 20vh;
+    max-height: 50vh;
 }
 
 .btns {

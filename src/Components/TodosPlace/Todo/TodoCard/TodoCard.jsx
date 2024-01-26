@@ -9,8 +9,12 @@ const TodoCard = ({
 }) => {
     return (
         <div className={classes.todoCard}>
-            <h2 className={classes.title}>{todo.title}</h2>
-            <p className={classes.body}>{todo.body}</p>
+            <h2 className={classes.title}>
+                <span>{todo.title}</span>
+            </h2>
+            <p className={classes.body}>
+                <span>{todo.body}</span>
+            </p>
             <div className={classes.btns}>
                 <button
                     onClick={() => toggleTodoStatusClickHandler(todo.id)}
