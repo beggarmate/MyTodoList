@@ -30,6 +30,7 @@
     padding: 10px 15px;
 }
 .activeSearchLabel {
+    color: $activeTextColor;
     outline: 2px solid $otherColor;
     background: $otherColor;
 }

@@ -72,15 +72,6 @@ const Todo = ({
           )
         : null;
 
-    const todoCard =
-        showTodoCard &&
-        createPortal(
-            <ModalWindow closeModal={closeTodoCard}>
-                <TodoPage todo={todo} />
-            </ModalWindow>,
-            document.body
-        );
-
     const removeModal =
         showRemoveWarning &&
         createPortal(
@@ -103,6 +94,20 @@ const Todo = ({
                         </button>
                     </div>
                 </div>
+            </ModalWindow>,
+            document.body
+        );
+
+    const todoCard =
+        showTodoCard &&
+        createPortal(
+            <ModalWindow closeModal={closeTodoCard}>
+                <TodoPage
+                    todo={todo}
+                    deleteClickHandler={openRemoveTodoModal}
+                    editClickHandler={openEditWindow}
+                    toggleTodoStatusClickHandler={toggleTodoStatusClickHandler}
+                />
             </ModalWindow>,
             document.body
         );
