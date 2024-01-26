@@ -9,7 +9,11 @@
 .searchInput {
     padding: 10px 15px;
     font-size: 1.5rem;
+    background: rgb(190, 190, 190);
+    transition: all 0.3s linear;
     &:focus {
+        background: rgb(255, 255, 255);
+
         outline: black 2px solid;
     }
 }

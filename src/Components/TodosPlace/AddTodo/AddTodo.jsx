@@ -81,11 +81,10 @@ const AddTodo = ({ todos, setTodos, setOpenModal }) => {
 
     return (
         <>
-            <h3>Создать задачу</h3>
             <button
                 className={classes.addBtn}
                 onClick={openAddTodoModal}>
-                <span className={classes.addBtnPlus}>+</span>
+                <span className={classes.addTodoBtn}>Создать задачу</span>
             </button>
             {modal}
         </>

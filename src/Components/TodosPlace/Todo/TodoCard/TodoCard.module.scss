@@ -27,6 +27,7 @@
     span {
         padding: 5px 10px;
         display: block;
+        border-left: 2px solid $borderColor;
         border-right: 2px solid $borderColor;
     }
     &::-webkit-scrollbar {
@@ -41,13 +42,15 @@
         display: none;
     }
     span {
+        min-height: 15vh;
         padding: 5px 10px;
         display: block;
+        border-left: 2px solid $borderColor;
         border-right: 2px solid $borderColor;
     }
     flex: 0 1 auto;
     width: 90%;
-    min-height: 20vh;
+    min-height: 15vh;
     max-height: 50vh;
 }
 

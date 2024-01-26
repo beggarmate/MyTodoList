@@ -6,7 +6,7 @@ const Sort = ({ filter, setFilter }) => {
         setFilter({
             ...filter,
             sort: e.target.value,
-            sortIncreaseOrder: false,
+            sortIncreaseOrder: true,
         });
     };
     const toggleSortOrderClickHandler = () => {
@@ -34,9 +34,17 @@ const Sort = ({ filter, setFilter }) => {
 
     function getSortOrderText(property) {
         if (getSortOrder(property) === "increase")
-            return <span>(по возрастанию)</span>;
+            return (
+                <span>
+                    ({property === "date" ? "Сначала старые" : "от А до Я"})
+                </span>
+            );
         if (getSortOrder(property) === "decrease")
-            return <span>(по убыванию)</span>;
+            return (
+                <span>
+                    ({property === "date" ? "Сначала свежие" : "от Я до А"})
+                </span>
+            );
         return null;
     }
 
@@ -83,7 +91,8 @@ const Sort = ({ filter, setFilter }) => {
                 className={getClassName("date")}
                 tabIndex="0">
                 <span>
-                    По дате <br />
+                    По дате создания
+                    <br />
                     {getSortOrderText("date")}
                 </span>
                 <input
